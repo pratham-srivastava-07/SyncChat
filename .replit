@@ -1,0 +1,22 @@
+run = "echo 'Run ./server to start the server or ./client to start the client.'"
+compile = "g++ -o server server.cpp && g++ -o client client.cpp"
+hidden = ["**/*.o", "**/*.d", ".ccls-cache"]
+
+[nix]
+channel = "stable-24_05"
+
+[languages]
+
+[languages.cpp]
+pattern = "**/*.{cpp,h}"
+
+[languages.cpp.languageServer]
+start = "ccls"
+
+[[ports]]
+localPort = 3000
+externalPort = 3000
+
+[[ports]]
+localPort = 8080
+externalPort = 80
